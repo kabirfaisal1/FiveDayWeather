@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primarily using Bootstrap for our CSS framework -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Weather Dashboard</title>
+    <link class="tabIcon" rel="icon" type="image/x-icon"
+    href="./assets/images/weatherfavicon.png"
+    alt="weatherfavicon"> </link>
+</head>
+<body>
+    <header class="header">
+        <h1>Weather Dashboard</h1>
+    </header>
+    
+    <!-- Bootstrip Grid for laying out the CSS elements. I am choosing to primarily display everyting as card elements -->
+    <div class="container-fluid">
+        <div class = "row">
+            <div class="col-12 col-lg-3">
+                <div class="card">
+                    <h3 class="card-header">Search for a City</h3>
+                    <form id="search-form" class="card-body">
+                        <label class="form-label" for="city"></label>
+                        <input name="city" id="search-city" type="text" autofocus="true" class="form-input" />
+                        <button type="submit" class="btn btn-primary">Search<i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                
+                <!-- The card that holds the search history -->
+                <div class="card">
+                    <div class="card-header">
+                        <h6>Search History</h6>
+                    </div>
+                    <div class="card-body" id="history"></div>
+                </div>
+
+            </div>
+
+            <!-- The large card in the upper right column that holds the current weather information -->
+            <div class="col-12 col-lg-9"  id="results-container">
+                <div class="card">
+                    <h3 class="card-header"><span id="name"></span> <span id="date"></span> <span id="icon"></span></h3>
+                    <div class="card-body" id="current-stats">
+                        <p>Temperature: <span id="temp"></span></p>
+                        <p>Humidity: <span id="humidity"></span></p>
+                        <p>Wind Speed: <span id="wind"></span></p>
+                        <p>UV Index: <span id="uv"></span><span  class="alert" id="uv-alert"></span></p>
+                    </div>
+                </div>
+                
+                <!-- the cards that will be used to display the 5-day forecast, it is one larger card to group them together with a nested card to display each day's info -->
+                <div class = "card" id="forecast-container">
+                    <div class="card-header">
+                        <h3 class="card-title">5-Day Forecast</h3>
+                    </div>
+
+                    <div class="row card-body" id="forecast-body">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- I'm also including moment.js to make working with the dates easier -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+body{
+    background-color: #F7ECDE;
+}
+.header {
+    background-color: #97D2EC;
+    color: black;
+    text-align: center;
+    height: auto;
+    padding: 15px;
+    font-family: '-apple-system-headline';
+    font-weight: 400;
+    font-size: 5em;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+.card{
+    margin-top: 80px;
+    margin-left: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.card-header h6 {
+    display: inline;
+    padding-right: 100px;
+}
+
+.alert {
+    margin-left: 25px;
+}
+
+.history-item {
+    border-style: solid;
+    border-width: thin;
+    margin-bottom: 3px;
+    border-radius: 10px;
+    border-color: lightslategray;
+    background-color: lightgray;
+    position: absolute;
+    float: center;
+    margin-left: 250px;
+    margin-top: 40px;
+    padding: 20px;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.history-item h4 {
+    padding-left: 10px;
+}
+
+.form-input {
+    border-color: rgb(130, 168, 206);
+    border-style: solid;
+    border-width: thin;
+
+}
+.form-input:focus {
+    outline: none
+}
+
+.forecast-card {
+    background-color:  rgb(126, 166, 206);
+}
+
+#forecast-container {
+    display: none;
+}
+
+#current-stats {
+    display: none;
+}
