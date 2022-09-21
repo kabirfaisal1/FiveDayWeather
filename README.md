@@ -4,9 +4,9 @@ User run in the browser and feature dynamically updated HTML and CSS powered by 
 
 
 # Deployed URL
-ttps://kabirfaisal1.github.io/FiveDayWeather/
+https://kabirfaisal1.github.io/FiveDayWeather/
 ### Open Deployed URL from terminal
- open -a 'google chrome'ttps://kabirfaisal1.github.io/FiveDayWeather/
+ open -a 'google chrome' https://kabirfaisal1.github.io/FiveDayWeather/
 
 
 # Folder structure 
