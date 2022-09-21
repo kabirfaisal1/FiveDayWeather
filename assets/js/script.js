@@ -74,7 +74,7 @@ function getWeather(city){
                             curWindEl.innerHTML = currentWeather.wind;
                             curUvEl.innerHTML = currentWeather.uv;
                             curIconEl.innerHTML = "<img src='https://openweathermap.org/img/wn/" + currentWeather.icon + "@2x.png'></img>";
-                            uvCheck();                        
+                            uv_Check();                        
                             getForecast(city);
                         });
                     }
@@ -88,7 +88,7 @@ function getWeather(city){
             });
         } else {
             //alert ("Error: " + response.statusText);
-            clearData();
+            clear_Data();
             cityNameEl.innerHTML = "Error: " + response.status + " " + city + " " + response.statusText;
 
 
@@ -129,7 +129,7 @@ function getForecast (city) {
                         forecast.push(futureDate);
                     }
                 }
-                displayForecast();
+                display_Forecast();
             })
         }
         else {
@@ -152,56 +152,54 @@ var displayWeather = function() {
     curWindEl.innerHTML = currentWeather.wind;
     curUvEl.innerHTML = currentWeather.uv;
     curIconEl.innerHTML = "<img src='https://openweathermap.org/img/wn/" + currentWeather.icon + "@2x.png'></img>";
-    uvCheck();
+    uv_Check();
 
 }
 
 //displays the searchHistory array into the history div element on the page
-var displayHistory = function() {
-    console.log("inside displayHistory");
+var display_History = function() {
+    console.log("inside display_History");
     historyEl.innerHTML = "";
     for (var i = 0; i<searchHistory.length; i++) {
         var historyDiv = document.createElement("div");
-        historyDiv.classList.add("history-item");
+        historyDiv.createElement("li");
         historyDiv.innerHTML = "<h4>"+searchHistory[i]+"</h4>";
         historyEl.appendChild(historyDiv);
     }
 }
 
-//loads the search history from localStorage into the searchHistory array and then calls displayHistory function.
-function loadHistory() {
-    console.log("inside loadHistory");
+//loads the search history from localStorage into the searchHistory array and then calls display_History function.
+function load_History() {
+    console.log("inside load_History");
     searchHistory = JSON.parse(localStorage.getItem("history"));
     if (!searchHistory) {
         searchHistory = [];
     }
-    displayHistory();
+    display_History();
 }
 
-function uvCheck() {
+function uv_Check() {
     if (currentWeather.uv === "error") {
         return;
     }
 }
 //function called by the event listener, it gets the value from the input in the form, validates it, and then passes it on to 
 //the getWeather function.
-function formSubmitHandler(event) {
-
-    //console.log("inside formSubmitHandler");
+function form_SubmitHandler(event) {
+    //console.log("inside form_SubmitHandler");
     event.preventDefault();
     var searchCity = searchInputEl.value.trim();
     //console.log ("Search City: " + searchCity);
     if (searchCity) {
         getWeather(searchCity);
-        console.log("index of ", searchHistory.indexOf(searchCity)); 
+        console.log(`index of , ${searchHistory.indexOf(searchCity)}`); 
         //Check for dulpicate values,  don't add if duplicate 
         if(searchHistory.indexOf(searchCity) == -1){
             searchHistory.push(searchCity);
             localStorage.removeItem("history");
             localStorage.setItem("history", JSON.stringify(searchHistory));
         }
-        
-        displayHistory();
+        display_History();
         searchInputEl.value = "";
     }
     else {
@@ -210,7 +208,7 @@ function formSubmitHandler(event) {
     }
 }
 
-function clearForecast() {
+function clear_Forecast() {
     forecast = [];
     forecastEl.innerHTML = "";
 }
@@ -220,23 +218,23 @@ function historyClickHandler (event) {
     //console.log("inside historyClickHandler");
     var histCity = event.target.textContent;
     if (histCity) {
-        clearForecast();
+        clear_Forecast();
         getWeather(histCity);
     }
 }
 
-function clearData() {
-    console.log("inside clearData");
+function clear_Data() {
+    console.log("inside clear_Data");
     curStatsEl.style.display = "none";
     forecastContEl.style.display = "none";
     curDateEl.innerHTML = "";
     curIconEl.innerHTML = "";
 }
 
-//displayForecast takes the data from the forecast array and creates individual cards for each day. Those cards are then 
+//display_Forecast takes the data from the forecast array and creates individual cards for each day. Those cards are then 
 //displayed within the 5-day forecast container on the page.
-function displayForecast() {
-    //console.log("inside displayForecast");
+function display_Forecast() {
+    //console.log("inside display_Forecast");
     for (var i=0; i<forecast.length; i++) {
         var cardContainerEl = document.createElement("div");
         cardContainerEl.classList.add("col-xl");
@@ -278,9 +276,8 @@ function displayForecast() {
 
 /** EVENT HANDLERS  **/
 
-//console.log(currentWeather);
-loadHistory();
+load_History();
 
 //event listener for when the user clicks the submit button in the form
-formEl.addEventListener("submit", formSubmitHandler);
+formEl.addEventListener("submit", form_SubmitHandler);
 historyEl.addEventListener("click", historyClickHandler);
