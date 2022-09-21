@@ -43,9 +43,10 @@ body{
     border-radius: 10px;
     border-color: lightslategray;
     background-color: lightgray;
-    position: absolute;
-    float: center;
-    margin-left: 250px;
+    
+    position:relative;
+  
+    margin-left:auto;
     margin-top: 40px;
     padding: 20px;
     top: 30%;
