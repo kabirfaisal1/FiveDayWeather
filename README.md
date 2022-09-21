@@ -9,8 +9,6 @@ https://kabirfaisal1.github.io/FiveDayWeather/
  open -a 'google chrome' https://kabirfaisal1.github.io/FiveDayWeather/
 
 
-# Application criteria
-
 # Folder structure 
 1. root will have 'index.html' file which will be the main application
 2. cssStyle will have 'style.css' file which will controls style and layout web pages
@@ -33,24 +31,30 @@ https://kabirfaisal1.github.io/FiveDayWeather/
 # User Story
 
 ```
-
+AS A traveler
+I WANT to see the weather outlook for multiple cities
+SO THAT I can plan a trip accordingly
 ```
 
 # Acceptance Criteria
 ```
-
+GIVEN a weather dashboard with form inputs
+WHEN I search for a city
+THEN I am presented with current and future conditions for that city and that city is added to the search history
+WHEN I view current weather conditions for that city
+THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the wind speed
+WHEN I view future weather conditions for that city
+THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
+WHEN I click on a city in the search history
+THEN I am again presented with current and future conditions for that city
 ```
 
-# Test Case
-```
 
-```
+
 
 ## App Screenshots
 
-## App Screenshots
+![Image at start.](./assets/images/pos.png)
 
-![Image at start.](./assests/images/)
-
-![Image at timeBox.](./assests/images/)
+![Image at bad request.](./assets/images/neg.png)
 

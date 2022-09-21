@@ -28,6 +28,7 @@ var curWindEl = document.querySelector("#wind");
 var curUvEl = document.querySelector("#uv");
 var searchInputEl = document.querySelector("#search-city");
 var formEl = document.querySelector("#search-form");
+var btnSubmitCityEL = document.querySelector("#btnsubmitCity");
 var historyEl = document.querySelector("#history");
 var clearBtnEl = document.querySelector("#clear-history");
 var forecastEl = document.querySelector("#forecast-body");
@@ -120,10 +121,11 @@ function getForecast (city) {
                     //this is the data we want to add, anything with a date not today and with a time of noon
                     if (dateTime[0] !== today && dateTime[1] === "12:00:00" ) {
                         var futureDate = {
-                            date: moment(dateTime[0]).format("MM/DD/YYYY"),
+                            date: moment(dateTime[0]).format("MM-DD-YYYY"),
                             time: dateTime[1],
                             icon: data.list[i].weather[0].icon,
                             temp: data.list[i].main.temp,
+                            wind: data.list[i].main.wind,
                             humidity: data.list[i].main.humidity
                         };
                         forecast.push(futureDate);
@@ -142,7 +144,7 @@ function getForecast (city) {
 }
 
 //displays the information that has been collected from the api calls onto the page.
-var displayWeather = function() {
+function displayWeather() {
     curStatsEl.style.display = "block";
     forecastContEl.style.display = "block";
     cityNameEl.innerHTML = currentWeather.name;
@@ -157,12 +159,13 @@ var displayWeather = function() {
 }
 
 //displays the searchHistory array into the history div element on the page
-var display_History = function() {
+function display_History() {
     console.log("inside display_History");
     historyEl.innerHTML = "";
     for (var i = 0; i<searchHistory.length; i++) {
         var historyDiv = document.createElement("div");
-        historyDiv.createElement("li");
+        var historyDiv = document.createElement("div");
+        historyDiv.classList.add("history-item");
         historyDiv.innerHTML = "<h4>"+searchHistory[i]+"</h4>";
         historyEl.appendChild(historyDiv);
     }
@@ -186,6 +189,7 @@ function uv_Check() {
 //function called by the event listener, it gets the value from the input in the form, validates it, and then passes it on to 
 //the getWeather function.
 function form_SubmitHandler(event) {
+    forecast = [];
     //console.log("inside form_SubmitHandler");
     event.preventDefault();
     var searchCity = searchInputEl.value.trim();
